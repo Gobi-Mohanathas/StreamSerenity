@@ -1,0 +1,34 @@
+############################################
+# OPERATING SYSTEM FILES
+############################################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+############################################
+# XAMPP / LOCAL SERVER
+############################################
+# Never commit local database credentials
+server/db.local.php
+
+# Environment variables (if used later)
+.env
+
+############################################
+# PHP / APPLICATION CACHE & LOGS
+############################################
+*.log
+*.tmp
+cache/
+tmp/
+sessions/
+
+############################################
+# DEPENDENCIES (if Composer is added later)
+############################################
+vendor/
+
+############################################
+# IDE / EDITOR FILES
+############################################
+.vscode
