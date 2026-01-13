@@ -1,5 +1,5 @@
 /*
-Author: Mouloud Arkat
+Author: Gobi Mohanathas
 File Name: signup.js
 Date of Creation: December 26, 2025
 Purpose: External Javascript script handling dynamic events and form validation for signup form

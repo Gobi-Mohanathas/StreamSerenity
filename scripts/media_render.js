@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 /**
- * Author: Mouloud Arkat
+ * Author: Gobi Mohanathas
  * File Name: media_render.js
  * Date of Creation: January 8, 2025
  * Purpose: Handles client-side filtering and sorting of media cards based on genre, 

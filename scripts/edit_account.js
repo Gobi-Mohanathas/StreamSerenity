@@ -1,5 +1,5 @@
 /*
-Author: Mouloud Arkat
+Author: Gobi Mohanathas
 File Name: edit_account.js
 Date of Creation: January 5, 2025
 Purpose: External Javascript script handling dynamic events and form validation for edit account page
