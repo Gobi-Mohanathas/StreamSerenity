@@ -42,7 +42,7 @@ $user = $stmnt->fetch();
 // Handle authentication failure when user does not exist or credentials are invalid
 if (!$user || $password !== $user['user_password']) {
     http_response_code(401);
-    echo json_encode(['error' => 'Invalid login']);
+    echo json_encode(['error' => 'Invalid Login: Please check credentials and try again']);
     exit;
 }
 
