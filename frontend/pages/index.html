@@ -15,23 +15,56 @@
     <script src="../js/auth-logout.js" defer></script>
 </head>
 <body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">STREAMSERENITY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="tv-shows.html">TV Shows</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </div>
 
-<header class="navbar">
-    <div class="nav-left">
-        <div class="logo">STREAMSERENITY</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="tv-shows.html">TV Shows</a></li>
-            <li><a href="account.html">Account</a></li>
-        </ul>
-    </div>
+        <div class="nav-right">
+            <a href="#" data-logout>Logout</a>
+        </div>
+    </header>
 
+    <main class="page-wrapper">
     
+        <!-- Horror Movies -->
+        <section class="media-section">
+            <h2>Horror Movies</h2>
 
-    <div class="nav-right">
-        <a href="#" data-logout>Logout</a>
-    </div>
-</header>
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="horror"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Action Movies -->
+        <section class="media-section">
+            <h2>Action Movies</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="action"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Most Watched -->
+        <section class="media-section">
+            <h2>Most Watched</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="most-watched"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
