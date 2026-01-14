@@ -11,7 +11,7 @@ desktop.ini
 # Never commit local database credentials
 server/db.local.php
 
-# Environment variables (if used later)
+# Environment variables
 .env
 
 ############################################
@@ -24,7 +24,7 @@ tmp/
 sessions/
 
 ############################################
-# DEPENDENCIES (if Composer is added later)
+# DEPENDENCIES
 ############################################
 vendor/
 
