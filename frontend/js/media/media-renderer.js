@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 /**
  * Author: Gobi Mohanathas
- * File Name: media_render.js
+ * File Name: media_renderer.js
  * Date of Creation: January 8, 2025
- * Purpose: Handles client-side filtering and sorting of media cards based on genre, 
- *          rating, and duration. Also enables click navigation to dummy details page.
+ * Purpose: 
  */
     
     // Stores reference to dropdown filters and media container
