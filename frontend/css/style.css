@@ -1,13 +1,17 @@
 /* FINAL CSS FOR STREAMSERENITY PROJECT */
 
-/* GLOBAL RESET */
+/* =========================
+   GLOBAL RESET
+========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BASE */
+/* =========================
+   BASE
+========================= */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #000;
@@ -23,7 +27,9 @@ a:hover {
     color: #e50914;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
     position: sticky;
     top: 0;
@@ -34,287 +40,148 @@ a:hover {
     padding: 1rem 2rem;
     background-color: #141414;
 }
+
 .nav-left {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
+
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
     color: #e50914;
 }
+
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
-    font-size: 1rem;
 }
+
 .nav-links a {
     color: #e5e5e5;
     transition: color 0.2s ease;
 }
+
 .nav-links a:hover {
     color: #e50914;
 }
+
 .nav-right {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    font-size: 0.95rem;
 }
 
-
-/* PAGE WRAPPER */
+/* =========================
+   PAGE WRAPPER
+========================= */
 .page-wrapper {
     padding: 2rem 2rem 3rem;
 }
 
-/* SECTIONS / ROWS */
-.section-title {
-    margin: 2rem 0 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-.row {
+/* =========================
+   MEDIA FILTER BAR
+========================= */
+.media-filters {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;    
+    gap: 1.25rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(
+        to right,
+        rgba(20,20,20,0.9),
+        rgba(20,20,20,0.6)
+    );
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
 }
 
-/* FILTER */
-.filter-title {
-    display: flex;
-    justify-content: center;
-    color:#e50914;
-    font-size: 24pt;
-}
-#genreFilter,
-#ratingFilter,
-#durationFilter {
-    width:7rem;
-    height: auto;
-    margin: 10px 0;
-    background-color: white;
-    color:black;
-    border-color: #b3b3b3;
-}
-
-/* CARD */
-.card {
+.filter-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 0 0 200px;
-    cursor: pointer;
-}
-.card img {
-    width: 80%;
-    display: block;
-    border-radius: 4px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin: 0 auto 5px auto;
+    gap: 0.25rem;
 }
 
-.card p {
-    margin-top: 5px;
-}
-
-.card:hover {
-    color: red;
-}
-.card:hover img {
-    transform: translateY(5px);
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-}
-.card-title {
-    margin-top: 0.35rem;
-    font-size: 0.95rem;
-}
-.card-meta {
-    font-size: 0.75rem;
+.filter-group label {
+    font-size: 0.7rem;
     color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-/* ACCOUNT PAGE */
-.account-container {
-    max-width: 1200px;
-    margin: 3rem auto;
+.filter-group select {
     background-color: #141414;
-    padding: 3rem 4rem;
-    border-radius: 10px;
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-.account-details {
-    flex: 1 1 600px;
-}
-.account-image {
-    flex: 0 0 200px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-.account-image img {
-    width: 180px;
-    height: 180px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid #e50914;
-}
-.account-section {
-    margin-bottom: 2rem;
-}
-.account-section h2 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-}
-.account-field {
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
-}
-.account-field span.label {
-    display: inline-block;
-    width: 160px;
-    color: #b3b3b3;
-    font-weight: 500;
-}
-.account-actions {
-    margin-top: 1rem;
-}
-.account-actions a {
-    color: #e50914;
-    font-weight: 600;
-    text-decoration: none;
-}
-.account-actions a:hover {
-    text-decoration: underline;
-}
-
-/* EDIT ACCOUNT PAGE */
-.edit-account-container {
-    max-width: 1000px;
-    width: 100%;
-    padding: 2rem 2rem;
-    border-radius: 10px;
-    background-color: #141414;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-    margin: 5rem auto;
-}
-.edit-account-container h1 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-.edit-account-container hr {
-    border: 0.5px solid #333;
-    margin-bottom: 1.5rem;
-}
-.edit-account-container .form-group {
-    margin-bottom: 0.8rem;
-}
-.edit-account-container .form-group label {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-    display: block;
-    color: #b3b3b3;
-}
-.edit-account-container .form-group input {
-    width: 100%;
-    padding: 0.6rem 0.5rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #333;
     color: #fff;
-    font-size: 1rem;
-}
-.edit-account-container .button-group {
-    margin-top: 1.5rem;
-}
-.edit-account-container .button-primary {
-    width: 100%;
-    padding: 0.9rem 0;
-    font-size: 1.1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #e50914;
-    color: #fff;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
     cursor: pointer;
-}
-.edit-account-container .button-primary:hover {
-    background-color: #f40612;
+    transition: border-color 0.2s ease;
 }
 
-/*INDEX & ADMIN INDEX PAGES */
+.filter-group select:hover,
+.filter-group select:focus {
+    border-color: #e50914;
+    outline: none;
+}
 
+/* =========================
+   MEDIA SECTIONS (ROWS)
+========================= */
 .media-section {
-    margin: 8rem 0;
-    padding: 2rem 2rem;
+    margin: 3rem 0;
+    padding: 0 2rem;
+    overflow: visible;
 }
 
 .media-section h2 {
     font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+    margin: 0 0 0.75rem 0;
     color: #e5e5e5;
 }
 
-/* Carousel wrapper */
+/* =========================
+   CAROUSEL
+========================= */
 .carousel-wrapper {
     position: relative;
+    overflow: visible;
 }
 
-/* Horizontal scroll row */
 .carousel-row {
     display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 0.5rem;
+    gap: 16px;
+    padding: 8px 48px 12px;
+    overflow: visible;
 }
 
 /* Hide scrollbar */
 .carousel-row::-webkit-scrollbar {
     display: none;
 }
+
 .carousel-row {
-    -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-/* Media cards */
-.media-card {
-    flex: 0 0 180px;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.media-card img {
-    width: 100%;
-    border-radius: 6px;
-    display: block;
-}
-
-.media-card:hover {
-    transform: scale(1.08);
-    z-index: 5;
-}
-
-/* Carousel arrows */
+/* =========================
+   CAROUSEL BUTTONS
+========================= */
 .carousel-btn {
     position: absolute;
     top: 50%;
-    transform: translateY(100%);
+    transform: translateY(-50%);
     background: rgba(20, 20, 20, 0.7);
     border: none;
     color: white;
     font-size: 2.5rem;
-    padding: 0.3rem 0;
+    padding: 0.2rem 0.5rem;
     cursor: pointer;
-    z-index: 10;
+    z-index: 20;
     transition: background 0.2s ease;
 }
 
@@ -323,258 +190,217 @@ a:hover {
 }
 
 .carousel-btn.left {
-    left: -10px;
+    left: 0;
 }
 
 .carousel-btn.right {
-    right: -10px;
+    right: 0;
 }
 
-/* LOGIN PAGE */
+/* =========================
+   MEDIA CARD
+========================= */
+.media-card {
+    width: clamp(220px, 18vw, 300px);
+    display: flex;
+    aspect-ratio: 2/3;
+    flex-direction: column;
+    background-color: #141414;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.media-image {
+    flex: 1 1 auto;
+    overflow: hidden;
+}
+
+.media-info {
+    flex: 0 0 auto;
+    padding: 0.4rem 0.6rem;
+    background-color: #141414;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.media-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    color: #b3b3b3;
+}
+
+.media-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.media-duration {
+    font-size: 1rem;
+    color: #b3b3b3;
+}
+
+.media-rating {
+    color: #b3b3b3;
+    font-weight: 600;
+}
+
+.media-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.media-card:hover {
+    transform: scale(1.12);
+    z-index: 10;
+}
+
+/* =========================
+   CARD OVERLAY (TITLE)
+========================= */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.75rem;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.2),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 6px;
+}
+
+.media-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-overlay h3 {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #fff;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
 .center-screen {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: radial-gradient(circle at top, #202020 0, #000 60%);
 }
+
 .login-card {
-    margin: auto;
     background-color: #141414;
-    padding: 4rem 4.5rem;
+    padding: 4rem;
     border-radius: 10px;
-    max-width: 900px;
-    width: 95%;
-    font-size: 1.1rem;
+    max-width: 450px;
+    width: 90%;
 }
+
 .login-card h1 {
     margin-bottom: 2rem;
     font-size: 2.2rem;
 }
+
 .login-card .form-group {
     margin-bottom: 1.5rem;
 }
-.login-card .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-}
-.login-card .form-group input {
+
+.login-card input {
     width: 100%;
-    padding: 1rem 0.6rem;
+    padding: 1rem;
     border-radius: 6px;
     border: none;
     background-color: #333;
     color: #fff;
-    font-size: 1.05rem;
 }
+
 .login-card .button-primary {
     width: 100%;
-    padding: 1rem 0.8rem;
+    padding: 1rem;
     border: none;
     border-radius: 6px;
     background-color: #e50914;
     color: #fff;
     cursor: pointer;
-    font-size: 1.15rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
 }
-.login-header {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.login-header .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #e50914;
-}
+
 .signup-text {
     margin-top: 1rem;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #b3b3b3;
 }
-.signup-text .signup-btn {
-    margin-left: 0.5rem;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.95rem;
-    background-color: #e50914;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-}
-.signup-text .signup-btn:hover {
-    background-color: #f40612;
-}
 
-/* SIGNUP PAGE (NEW CLASSES) */
+/* =========================
+   SIGNUP PAGE
+========================= */
 .signup-screen {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: radial-gradient(circle at top, #202020 0, #000 60%);
-    overflow: hidden;
 }
+
 .signup-card {
-    margin: auto;
     background-color: #141414;
-    padding: 3rem 3.5rem;
+    padding: 3rem;
     border-radius: 10px;
-    max-width: 900px;
-    width: 95%;
-    font-size: 1.1rem;
+    max-width: 500px;
+    width: 90%;
 }
-.signup-card h1 {
-    margin-bottom: 1.5rem;
-    font-size: 2.2rem;
-}
-.signup-group {
-    margin-bottom: 1rem;
-}
-.signup-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    color: #b3b3b3;
-}
-.signup-group input,
-.signup-group select {
+
+.signup-card input,
+.signup-card select {
     width: 100%;
-    padding: 1rem 0.6rem;
+    padding: 1rem;
     border-radius: 6px;
     border: none;
     background-color: #333;
     color: #fff;
-    font-size: 1.05rem;
-}
-.signup-button {
-    width: 100%;
-    padding: 1rem 0.8rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #e50914;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.15rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-.signup-header {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-.signup-logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #e50914;
-}
-.signup-text {
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 0.95rem;
-    color: #b3b3b3;
-}
-.signup-text .login-btn {
-    margin-left: 0.5rem;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.95rem;
-    background-color: #e50914;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-}
-.signup-text .login-btn:hover {
-    background-color: #f40612;
 }
 
-/* ADMIN DASHBOARD */
+/* =========================
+   ACCOUNT PAGE
+========================= */
+.account-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    background-color: #141414;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
 .admin-dashboard-wrapper {
     max-width: 1000px;
     margin: 3rem auto;
     padding: 2rem;
 }
-.admin-dashboard-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
+
 .admin-card {
     background-color: #141414;
     padding: 2rem;
     border-radius: 10px;
     margin-bottom: 2rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-.admin-add-form label, .admin-delete-form label {
-    display: block;
-    font-size: 1rem;
-    color: #b3b3b3;
-    margin-bottom: 0.5rem;
-}
-.admin-input {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    font-size: 1rem;
-}
-.admin-button {
-    width: auto;
-    display: inline-block;
-    padding: 0.9rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 6px;
-    border: none;
-    background-color: #e50914;
-    color: #fff;
-    cursor: pointer;
-    margin-right: 10px;
 }
 
-.admin-button:hover {
-    background-color: #f40612;
-}
-.error-message {
-    color: #ff4d4d;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-    display: block;
-}
-.warning {
-    color: red;
-    margin-bottom: 0.8rem;
-}
+/* =========================
+   RESPONSIVE
+========================= */
 
-.input-error {
-    border-color: red;
-}
-
-.input-error:focus {
-    border-color: red;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .navbar { flex-wrap: wrap; gap: 0.75rem; }
-    .nav-left { gap: 1rem; }
-    .page-wrapper { padding: 1rem; }
-    .card { width: 150px; }
-    .account-container { flex-direction: column; margin: 1.5rem 1rem; padding: 2rem 2.5rem; }
-    .account-image { margin-top: 2rem; justify-content: center; }
-    .login-card { padding: 2.5rem 3rem; max-width: 90%; }
-    .signup-card { padding: 2.5rem 3rem; max-width: 90%; }
-}
-
-@media (max-width: 600px) {
-    .edit-account-card { padding: 1.5rem 1rem; margin: 2rem 1rem; }
-    .signup-card { padding: 1.5rem 1rem; margin: 2rem 1rem; }
-}

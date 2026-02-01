@@ -7,13 +7,24 @@
 
 export async function fetchMedia() {
     try {
-        const response = await fetch('/StreamSerenity/backend/media/list.php');
+        const response = await fetch('/StreamSerenity/backend/media/list.php', {
+            credentials: 'include'
+        });
 
+        
         if (!response.ok) {
-            throw new Error('Failed to fetch media');
+            throw new Error('HTTP ${response.status}');
         }
 
-        return await response.json()
+        const data = await response.json()
+
+        if (!Array.isArray(data)) {
+            console.warn('Unexpected media format: ', data);
+            return [];
+        }
+
+        return data;
+        
     } catch (e) {
         console.error('Media fetch error:', e);
         return [];
