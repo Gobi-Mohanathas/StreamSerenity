@@ -13,13 +13,14 @@ if (file_exists(__DIR__ . '/../.env')) {
         if (strpos(trim($line), '#') === 0 || !str_contains($line, '=')){
             continue;
         }
-        putenv(trim($line));
+        [$key, $value] = array_map('trim', explode('=', $line, 2));
+        putenv("$key=$value");
     }
 }
 // Database host
 $host = getenv('DB_HOST');
 // Database port
-$port = getenv('DB_PORT');
+$port = getenv('DB_PORT') ?: 5432;
 // Database name
 $dbname = getenv('DB_NAME');
 // Database user
@@ -40,5 +41,6 @@ try {
 }
 catch (PDOException $e) {
     http_response_code(500);
-    exit("Database connection failed");
+    echo json_encode(["error" => "Database connection failed"]);
+    exit();
 }
