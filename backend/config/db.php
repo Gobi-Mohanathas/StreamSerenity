@@ -8,6 +8,8 @@
  */
 
 // Check to see if .env file exists and prepares database information
+error_log("RUNTIME DB_USER = " . getenv('DB_USER'));
+
 if (getenv('APP_ENV') !== 'production' && file_exists(__DIR__ . '/../.env')) {
     foreach (file(__DIR__ . '/../.env') as $line) {
         if (strpos(trim($line), '#') === 0 || !str_contains($line, '=')) continue;
