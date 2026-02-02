@@ -6,6 +6,7 @@ Purpose: Handles client-side login by submitting credentials to the authenticati
          displays inline validation errors, and redirects user based on authorization
          role.
 */
+import {API_BASE} from "./config.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
@@ -38,11 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Send login credentials to backend authentication endpoint
-            const response = await fetch('/StreamSerenity/backend/auth/login.php', {
+            const response = await fetch(`${API_BASE}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ email, password })
             });
 
@@ -58,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Redirect based on role
             if (data.role === 'admin') {
-                window.location.href = '/StreamSerenity/frontend/pages/admin/index.html';
+                window.location.href = '/pages/admin/index.html';
             } else {
-                window.location.href = '/StreamSerenity/frontend/pages/index.html';
+                window.location.href = '/pages/index.html';
             }
 
         } catch (err) {
