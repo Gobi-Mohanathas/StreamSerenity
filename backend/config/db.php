@@ -29,7 +29,7 @@ $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 
 // Storing information for which database, where and what name
-$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
+$dsn = "pgsql:host=$host;port=$port;dbname=$dbname;sslmode=require";
 
 // Attempt to create PDO object using above information and setting the error attribute to throw
 // exceptions, if unsuccessful then stop script and display error message.
