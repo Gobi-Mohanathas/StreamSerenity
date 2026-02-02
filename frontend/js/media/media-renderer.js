@@ -4,20 +4,10 @@
  * Date of Creation: January 8, 2025
  * Purpose: 
  */
-    
+import { API_BASE } from "../config.js";
 import { fetchMedia } from "./media-service.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const authResponse = await fetch("/StreamSerenity/backend/auth/require-auth.php", {
-        credentials: "include"
-    });
-
-    const authData = await authResponse.json()
-
-    if (!authResponse.ok || !authData.authenticated) {
-        window.location.href = "/StreamSerenity/frontend/pages/login.html";
-        return;
-    }
 
     const media = await fetchMedia();
 

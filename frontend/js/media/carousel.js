@@ -6,7 +6,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.carousel').forEach(carousel => {
+    document.querySelectorAll('.carousel-wrapper').forEach(carousel => {
         const track = carousel.querySelector('.carousel-track');
         const leftBtn = carousel.querySelector('.carousel-btn.left');
         const rightBtn = carousel.querySelector('.carousel-btn.right');

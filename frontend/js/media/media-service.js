@@ -4,10 +4,11 @@
  * Date of Creation: January 14, 2025
  * Purpose: 
  */
+import { API_BASE } from "../config.js";
 
 export async function fetchMedia() {
     try {
-        const response = await fetch('/StreamSerenity/backend/media/list.php', {
+        const response = await fetch(`${API_BASE}/media/list`, {
             credentials: 'include'
         });
 
