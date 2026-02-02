@@ -9,5 +9,13 @@
 
 // Check session status and start session if no session in progress
 if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'lifetime' => 0,          // Session cookie (expires on browser close)
+        'path' => '/',
+        'domain' => '.onrender.com',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'None'
+    ]);
     session_start();
 }
