@@ -10,28 +10,102 @@
     <meta charset="UTF-8">
     <title>Home | StreamSerenity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/require-auth.js" defer></script>
+
+    <!-- Authentication -->
     <script src="../js/auth-logout.js" defer></script>
+
+    <!-- Media  -->
+    <script type="module" src="../js/media/media-renderer.js"></script>
+    <script src="../js/media/carousel.js" defer></script>
 </head>
 <body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">STREAMSERENITY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="tv-shows.html">TV Shows</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </div>
 
-<header class="navbar">
-    <div class="nav-left">
-        <div class="logo">STREAMSERENITY</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="tv-shows.html">TV Shows</a></li>
-            <li><a href="account.html">Account</a></li>
-        </ul>
-    </div>
+        <div class="nav-right">
+            <a href="#" data-logout>Logout</a>
+        </div>
+    </header>
 
+    <main class="page-wrapper">
+
+        <!-- Media Filters -->
+        <section class="media-filters">
+            <div class="filter-group">
+                <label for="filter-genre">Genre</label>
+                <select id="filter-genre">
+                    <option value="">All</option>
+                    <option value="Action">Action</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-rating">Rating</label>
+                <select id="filter-rating">
+                    <option value="">All</option>
+                    <option value="9">9+</option>
+                    <option value="8">8+</option>
+                    <option value="7">7+</option>
+                    <option value="6">6+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-duration">Duration</label>
+                <select id="filter-duration">
+                    <option value="">All</option>
+                    <option value="short">Under 90 min</option>
+                    <option value="medium">90–120 min</option>
+                    <option value="long">120+ min</option>
+                </select>
+            </div>
+        </section>
     
+        <!-- Horror Media -->
+        <section class="media-section">
+            <h2>Horror</h2>
 
-    <div class="nav-right">
-        <a href="#" data-logout>Logout</a>
-    </div>
-</header>
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="horror"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Action Media -->
+        <section class="media-section">
+            <h2>Action</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="action"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Most Watched -->
+        <section class="media-section">
+            <h2>Most Watched</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="most-watched"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

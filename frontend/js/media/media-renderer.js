@@ -1,81 +1,131 @@
-document.addEventListener("DOMContentLoaded", () => {
 /**
  * Author: Gobi Mohanathas
- * File Name: media_render.js
+ * File Name: media_renderer.js
  * Date of Creation: January 8, 2025
- * Purpose: Handles client-side filtering and sorting of media cards based on genre, 
- *          rating, and duration. Also enables click navigation to dummy details page.
+ * Purpose: 
  */
     
-    // Stores reference to dropdown filters and media container
-    const genreF = document.getElementById("genreFilter");
-    const ratingF = document.getElementById("ratingFilter");
-    const durationF = document.getElementById("durationFilter");
+import { fetchMedia } from "./media-service.js";
 
-    const container = document.getElementById("mediaContainer");
-    const cards = Array.from(document.querySelectorAll(".card")); // store original cards
-
-    // Add click event listeners to each card for navigation to detail page
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            window.location.href = "dummy_page.php";
-        });
+document.addEventListener("DOMContentLoaded", async () => {
+    const authResponse = await fetch("/StreamSerenity/backend/auth/require-auth.php", {
+        credentials: "include"
     });
-    
-    // Function to apply genre, rating, and duration filters to media cards and updates display
-    function applyFilters() {
 
-        // Store current filter values
-        const g = genreF.value;
-        const r = ratingF.value ? parseFloat(ratingF.value) : null;
-        const d = durationF.value;
+    const authData = await authResponse.json()
 
-        // Process each card to determine if it should be visible or not
-        cards.forEach(card => {
-            let show = true;
+    if (!authResponse.ok || !authData.authenticated) {
+        window.location.href = "/StreamSerenity/frontend/pages/login.html";
+        return;
+    }
 
-            // Extract card data attributes for filtering
-            const cardGenre = card.dataset.genre;
-            const cardRating = parseFloat(card.dataset.rating);
+    const media = await fetchMedia();
 
-            // Convert duration from "HH:MM:SS" format to total minutes for comparison
-            const durationSegments = card.dataset.duration.split(':');
-            const cardDuration = parseInt(durationSegments[0]) * 60 + parseInt(durationSegments[1]) + Math.round(parseInt(durationSegments[2])/60);
+    if (!media.length) {
+        return;
+    }
 
-            // Apply genre filter, hide card if genre of card does not match genre filter
-            if (g && g !== cardGenre) show = false;
+    const genreFilter = document.getElementById("filter-genre");
+    const ratingFilter = document.getElementById("filter-rating");
+    const durationFilter = document.getElementById("filter-duration");
 
-            // Apply rating filter, hide card if rating of card does not match rating filter
-            if (r !== null && cardRating < r) show = false;
+    const rowStructure = {
+        horror: item => item.genre === "Horror",
+        action: item => item.genre === "Action",
+        'most-watched': item => item.rating >= 8
+    };
 
-            // Apply duration filter, hide card if duration of card does not match duration filter
-            if (d === "15-30" && !(cardDuration >= 15 && cardDuration <= 30)) show = false;
-            if (d === "30-60" && !(cardDuration > 30 && cardDuration <= 60)) show = false;
-            if (d === "60-120" && !(cardDuration > 60 && cardDuration <= 120)) show = false;
-            if (d === "120-180" && !(cardDuration > 120 && cardDuration <= 180)) show = false;
-            if (d === "180+" && !(cardDuration > 180)) show = false;
+    function passesFilters(item) {
+        if (genreFilter?.value && item.genre !== genreFilter.value) {
+            return false;
+        }
 
-            // Update visibility based on filter results
-            card.style.display = show ? "flex" : "none";
+        if (ratingFilter?.value && item.rating < Number(ratingFilter.value)) {
+            return false;
+        }
+
+        if (durationFilter?.value) {
+            const mins = item.duration_minutes;
+
+            if (durationFilter.value === "short" && mins >= 90) return false;
+            if (durationFilter.value === "medium" && (mins < 90 || mins > 120)) return false;
+            if (durationFilter.value === "long" && mins <= 120) return false;
+        }
+
+        return true;
+    }
+
+    function renderRows() {
+        Object.entries(rowStructure).forEach(([rowKey, filterFn]) => {
+            const row = document.querySelector(
+                `.carousel-row[data-row="${rowKey}"]`
+            );
+            
+            if (!row) {
+                return;
+            }
+
+            row.innerHTML = "";
+
+            media
+                .filter(filterFn)
+                .filter(passesFilters)
+                .forEach(item => {
+                    row.appendChild(createMediaCard(item));
+                });
         });
-
-        // Sort card after filtering
-        sortCards();
     }
 
-    function sortCards() {
-        // Only visible cards are sorted
-        const visibleCards = cards.filter(c => c.style.display !== "none");
 
-        // Sorts cards alphabetically
-        visibleCards.sort((a,b) => a.dataset.title.localeCompare(b.dataset.title));
+    [genreFilter, ratingFilter, durationFilter].forEach(filter => {
+        if (filter) {
+            filter.addEventListener("change", renderRows);
+        }
+    });
 
-        // Append sorted cards to container for updates visual
-        visibleCards.forEach(c => container.appendChild(c));
-    }
-
-    // Add event listeners to filter dropdowns to trigger filtering on change
-    genreF.addEventListener("change", applyFilters);
-    ratingF.addEventListener("change", applyFilters);
-    durationF.addEventListener("change", applyFilters);
+    renderRows();
 });
+
+
+function createMediaCard(item) {
+    const card = document.createElement("div");
+    card.className = "media-card";
+
+    card.innerHTML = `
+        <div class="media-image">
+            <img
+                src="/StreamSerenity/frontend/images/${item.image_filename}"
+                alt="${item.title}"
+                loading="lazy"
+            />
+        </div>
+
+        <div class="media-info">
+            <h3 class="media-title">${item.title}</h3>
+
+            <div class="media-meta">
+                <span class="media-rating">⭐ ${item.rating}</span>
+                <span class="media-duration">
+                    ${formatDuration(item.duration_minutes)}
+                </span>
+            </div>
+        </div>
+    `;
+
+    card.addEventListener("click", () => {
+        window.location.href = "dummy_page.php";
+    });
+
+    return card;
+}
+
+function formatDuration(minutes) {
+    if (!minutes && minutes !== 0){
+        return "";
+    };
+
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+
+    return h > 0 ? `${h}h ${m}m` : `${m}m`;
+}

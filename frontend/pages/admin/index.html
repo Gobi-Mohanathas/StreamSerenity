@@ -15,23 +15,57 @@
     <script src="../../js/auth-logout.js" defer></script>
 </head>
 <body>
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">STREAMSERENITY</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="../movies.html">Movies</a></li>
+                <li><a href="../tv-shows.html">TV Shows</a></li>
+                <li><a href="../account.html">Account</a></li>
+                <li><a href="dashboard.html">Admin Tool</a></li>
+            </ul>
+        </div>
 
-<header class="navbar">
-    <div class="nav-left">
-        <div class="logo">STREAMSERENITY</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="../movies.html">Movies</a></li>
-            <li><a href="../tv-shows.html">TV Shows</a></li>
-            <li><a href="../account.html">Account</a></li>
-            <li><a href="dashboard.html">Admin Tool</a></li>
-        </ul>
-    </div>
+        <div class="nav-right">
+            <a href="#" data-logout>Logout</a>
+        </div>
+    </header>
 
-    <div class="nav-right">
-        <a href="#" data-logout>Logout</a>
-    </div>
-</header>
+    <main class="page-wrapper">
 
+        <!-- Recently Added -->
+        <section class="media-section">
+            <h2>Recently Added</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="recent"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- All Movies -->
+        <section class="media-section">
+            <h2>All Movies</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="movies"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Premium Content -->
+        <section class="media-section">
+            <h2>Premium Content</h2>
+
+            <div class="carousel-wrapper" data-carousel>
+                <button class="carousel-btn left">&#10094;</button>
+                <div class="carousel-row" data-row="premium"></div>
+                <button class="carousel-btn right">&#10095;</button>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
