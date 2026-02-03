@@ -38,6 +38,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
         // Handle network or server failures/issues
         console.error("Auth check failed:", err);
-        window.location.href = '/pages/login.html';
     }
 });
