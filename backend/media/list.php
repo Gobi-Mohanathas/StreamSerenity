@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Author: Gobi Mohanathas
@@ -9,6 +8,7 @@
 
 require __DIR__ . '/../auth/session.php';
 require __DIR__ . '/../config/db.php';
+require __DIR__ . '/../config/bootstrap.php';
 
 
 header('Content-Type: application/json');

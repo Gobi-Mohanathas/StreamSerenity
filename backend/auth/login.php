@@ -8,8 +8,9 @@
  */
 
 require __DIR__ . '/session.php';
-
 require __DIR__ . '/../config/db.php';
+
+require __DIR__ . '/../config/bootstrap.php';
 
 header('Content-Type: application/json');
 
