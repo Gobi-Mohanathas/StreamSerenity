@@ -6,7 +6,7 @@ Purpose: Handles client-side logout by calling the backend logout API,
          clearing the user session, and redirecting the user to the
          login page.
 */
-import { API_BASE } from "./config";
+import { API_BASE } from "./config.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.querySelector('[data-logout]');
