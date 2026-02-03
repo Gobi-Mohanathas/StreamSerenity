@@ -13,14 +13,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         // Request authentication status from backend
         const response = await fetch(`${API_BASE}/auth/require-auth`, {
-            credentials: "include" // 
+            credentials: "include"
         });
 
-        const data = await response.json();
+        let data = {};
+        try {
+            data = await response.json();
+        } catch (e) {
+            console.warn("Non-JSON response from require-auth endpoint");
+        }
 
         // Redirect unauthenticated users to login page
         if (!response.ok || !data.authenticated) {
-            window.location.href = '/pages/login.html';
+            window.location.href = "/pages/login.html";
             return;
         }
 
@@ -32,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (err) {
         // Handle network or server failures/issues
-        console.error(err);
+        console.error("Auth check failed:", err);
         window.location.href = '/pages/login.html';
     }
 });

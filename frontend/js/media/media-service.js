@@ -14,10 +14,15 @@ export async function fetchMedia() {
 
         
         if (!response.ok) {
-            throw new Error('HTTP ${response.status}');
+            throw new Error(`HTTP ${response.status}`);
         }
 
-        const data = await response.json()
+        let data = [];
+        try {
+            data = await response.json();
+        } catch (e) {
+            console.warn("Non-JSON response from media-service.js endpoint");
+        }
 
         if (!Array.isArray(data)) {
             console.warn('Unexpected media format: ', data);

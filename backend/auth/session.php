@@ -1,7 +1,7 @@
 <?php
 /**
  * Author: Gobi Mohanathas
- * File Name: login.php
+ * File Name: session.php
  * Date of Creation: January 13, 2026
  * Purpose: Initializes or resumes PHP sessions across authentication
  *          and protected API endpoints.
@@ -12,7 +12,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 0,          // Session cookie (expires on browser close)
         'path' => '/',
-        'domain' => '.onrender.com',
         'secure' => true,
         'httponly' => true,
         'samesite' => 'None'

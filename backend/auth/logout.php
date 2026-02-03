@@ -9,11 +9,27 @@
 
 require __DIR__ . '/session.php';
 
+header('Content-Type: application/json');
+
 // Clear all session variables
 $_SESSION = [];
+
+// Delete the session cookie
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(
+        session_name(),
+        '',
+        time() - 42000,
+        $params['path'],
+        $params['domain'] ?? '',
+        $params['secure'],
+        $params['httponly']
+    );
+}
 
 // Destroy the session on the server
 session_destroy();
 
-// Return HTTP 204 (No content) to indicate successful logout 
-http_response_code(204);
+// Return confirmation
+echo json_encode(['success' => true]);

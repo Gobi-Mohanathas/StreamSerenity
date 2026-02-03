@@ -1,13 +1,15 @@
 <?php
 /**
  * Author: Gobi Mohanathas
- * File Name: login.php
+ * File Name: require-auth.php
  * Date of Creation: January 13, 2026
  * Purpose: API endpoint that checks if user is currently authenticated by
  *          validating the active PHP session and returning authentication
  *          status as JSON.
  */
 require __DIR__ . '/session.php';
+
+header('Content-Type: application/json');
 
 // If no authenticated user session exists, return unauthorized response
 if (!isset($_SESSION['user_id'])) {

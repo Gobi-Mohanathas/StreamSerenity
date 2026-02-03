@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/bootstrap.php';
+header('Content-Type: application/json');
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -10,6 +10,7 @@ switch ($path) {
     case '':
     case '/':
         echo json_encode([
+            http_response_code(200);
             'message' => 'Auth API'
         ]);
         break;

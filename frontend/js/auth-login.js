@@ -48,7 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ email, password })
             });
 
-            const data = await response.json();
+            let data = {};
+
+            try {
+                data = await response.json();
+            } catch (e) {
+                console.warn("Non-JSON response from login point");
+            }
 
             // Handle authentication failure returned by backend
             if (!response.ok) {

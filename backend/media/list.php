@@ -13,6 +13,13 @@ require __DIR__ . '/../config/db.php';
 
 header('Content-Type: application/json');
 
+// Enforce authentication
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Unauthorized']);
+    exit;
+}
+
 $sql = "
     SELECT
         media_id,
@@ -38,7 +45,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $row['duration_minutes'] = null;
     }
 
-    unset($row['duration']); 
+    unset($row['duration']);
     $media[] = $row;
 }
 

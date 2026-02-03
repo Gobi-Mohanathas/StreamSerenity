@@ -1,2 +1,3 @@
-/  /pages/login.html  200
-/pages/*  /pages/:splat  200
+/               /pages/login.html           200
+/pages/admin    /pages/admin/index.html     200
+/pages/*        /pages/:splat               200

@@ -4,7 +4,6 @@
  * Date of Creation: January 8, 2025
  * Purpose: 
  */
-import { API_BASE } from "../config.js";
 import { fetchMedia } from "./media-service.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -84,7 +83,7 @@ function createMediaCard(item) {
     card.innerHTML = `
         <div class="media-image">
             <img
-                src="/StreamSerenity/frontend/images/${item.image_filename}"
+                src="/images/${item.image_filename}"
                 alt="${item.title}"
                 loading="lazy"
             />

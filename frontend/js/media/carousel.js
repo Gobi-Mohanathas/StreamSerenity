@@ -7,9 +7,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.carousel-wrapper').forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
+        const track = carousel.querySelector('.carousel-row');
         const leftBtn = carousel.querySelector('.carousel-btn.left');
         const rightBtn = carousel.querySelector('.carousel-btn.right');
+
+        if (!track || !leftBtn || !rightBtn) {
+            return;
+        }
 
         const scrollAmount = track.clientWidth * 0.9;
 
